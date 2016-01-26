@@ -1,0 +1,1743 @@
+<!doctype html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Mais poder ao HTML com AngularJS</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/angular.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Gumga - Módulo 3</h1>
+					<h3>HTML, CSS, JavaScript e AngularJS</h3>
+					<p>
+						<small>Com <a href="http://guiseek.js.org">Gui Seek</a> / <a href="http://twitter.com/guiseek">@guiseek</a></small>
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<img width="400" height="400" data-src="/imgs/HTML5_logo_and_wordmark.svg.png" alt="HyperText Markup Language">
+						<br>
+						<p><em>HTML</em> (HyperText Markup Language).</p>
+						<p>É uma linguagem de marcação utilizada na construção de páginas na Web.</p>
+					</section>
+					<section>
+						<h2>Exibindo informações na Web</h2>
+                        <pre><code class="html" data-trim contenteditable style="font-size: 18px;">
+&lt;!doctype html&gt;
+&lt;html lang=&quot;pt-br&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;HTML, CSS, JavaScript e AngularJS&lt;/title&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;HTML, CSS, JavaScript e AngularJS&quot;&gt;
+        &lt;meta name=&quot;author&quot; content=&quot;Gui Seek&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/style.css&quot;&gt;
+        &lt;script src=&quot;assets/js/script.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Informação
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+					</section>
+					<section>
+						<h2>Tags</h2>
+						<ul>
+							<li>
+								Palavras entre parênteses <i>angulares</i>
+							</li>
+							<li>
+								Marcação semântica
+							</li>
+							<li>
+								Hierarquia de elementos
+							</li>
+							<li>
+								Atributos e valores
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Estrutura de um documento</h2>
+                        <pre><code class="html" data-trim>
+...
+&lt;body&gt;
+    &lt;header&gt;&lt;/header&gt;
+    &lt;nav&gt;&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;article&gt;&lt;/article&gt;
+        &lt;/section&gt;
+        &lt;aside&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+...
+                        </code></pre>
+					</section>
+					<section>
+						<h2>Semântica / Micro dados</h2>
+						<p>Permite a representação de dados HTML de forma mais semântica para mecanismos de busca.</p>
+					</section>
+
+					<section>
+						<h2>Exemplo sem semântica</h2>
+                        <pre><code class="html" data-trim>
+...
+&lt;div&gt;
+    &lt;div&gt;28/01/2016 19:00&lt;/div&gt;
+    &lt;div&gt;HTML, CSS, JavaScript e AngularJS&lt;/div&gt;
+    &lt;div&gt;
+        &lt;span&gt;Gumga&lt;/span&gt;
+        &lt;div&gt;
+            &lt;span&gt;Avenida Duque de caxias&lt;/span&gt;
+            &lt;span&gt;Maringá&lt;/span&gt;
+            &lt;span&gt;Paraná&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+...
+                    </code></pre>
+					</section>
+
+					<section>
+						<h2>Exemplo com semântica</h2>
+                        <pre><code class="html" data-trim>
+...
+&lt;div itemscope itemtype="http://schema.org/Event"&gt;
+    &lt;div itemprop="startDate" content="2016-01-28T19:00"&gt;28/01/2016 19:00&lt;/div&gt;
+    &lt;div itemprop="name"&gt;HTML, CSS, JavaScript e AngularJS&lt;/div&gt;
+    &lt;div itemprop="location" itemscope itemtype="http://schema.org/Place"&gt;
+        &lt;span itemprop="name"&gt;Gumga&lt;/span&gt;
+        &lt;div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"&gt;
+            &lt;span itemprop="streetAddress"&gt;Avenida Duque de caxias&lt;/span&gt;
+            &lt;span itemprop="addressLocality"&gt;Maringá&lt;/span&gt;
+            &lt;span itemprop="addressRegion"&gt;Paraná&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+...
+                        </code></pre>
+					</section>
+                    <section>
+                        <h2>Documentação de referência?</h2>
+                        <p><a href="http://schema.org/">Schema.org</a> é patrocinado pelo <a href="http://google.com/">Google</a>, <a href="http://microsoft.com/">Microsoft</a>, <a href="http://yahoo.com/">Yahoo</a> e <a href="http://yandex.com/">Yandex</a>. Os vocabulários são desenvolvidos por um processo de comunidade aberta, usando a lista de discussão public-schemaorg@w3.org e através do <a href="http://github.com/">GitHub</a>.</p>
+                    </section>
+                    <section>
+                        <h1>Tags HTML</h1>
+                    </section>
+                    <section>
+                        <h2>Elemento raíz</h2>
+                        <table> 
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                <tr> 
+                                    <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html"><code>&lt;html&gt;</code></td>
+                                    <td><small>Representa a raiz de um documento HTML ou XHTML. Todos os outros elementos devem ser descendentes desse elemento.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Metadados de documento</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head"><code>&lt;head></code></a>
+                                    </td>
+                                    <td><small>Representa uma coleção de metadados sobre o documento, incluindo links suas definições de scripts e folhas de estilo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title"><code>&lt;title></code></a>
+                                    </td>
+                                    <td><small>Define o título do documento, apresentado na barra de título do navegador ou na guia da página. Ele só pode conter texto e todas as tags contidas não são interpretados.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base"><code>&lt;base></code></a>
+                                    </td>
+                                    <td><small>Define a URL base para URL relativa na página.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Metadados de documento</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link></code></a>
+                                    </td>
+                                    <td><small>Usado para linkar JavaScript e CSS externo o documento HTML.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta"><code>&lt;meta></code></a>
+                                    </td>
+                                    <td><small>Define os metadados que não podem ser definidas usando outro elemento HTML.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style"><code>&lt;style></code></a>
+                                    </td>
+                                    <td><small>Tag usada para escrever CSS dentro do documento HTML.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Scripting</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script></code></a>
+                                    </td>
+                                    <td><small>Define um script interno ou link para um script externo. A linguagem de script é JavaScript.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"><code>&lt;noscript></code></a>
+                                    </td>
+                                    <td><small>Define um conteúdo alternativo a ser exibido quando o navegador não suporta scripts.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template"><code>&lt;template></code></a>
+                                    </td>
+                                    <td><small>Container para conteúdo no lado cliente instanciado em tempo de execução usando JavaScript.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seções</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"><code>&lt;body></code></a>
+                                    </td>
+                                    <td><small>Representa o principal conteúdo de um documento HTML. Há apenas um elemento <body> em um documento.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section"><code>&lt;section></code></a>
+                                    </td>
+                                    <td><small>Define a seção do Documento.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav"><code>&lt;nav></code></a>
+                                    </td>
+                                    <td><small>Define uma seção que contém apenas links de navegação.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"><code>&lt;article></code></a>
+                                    </td>
+                                    <td><small>Define que pode existir de forma independente do resto do conteúdo. Esta Tag poderia ser um post no fórum, um artigo de revista ou jornal, uma entrada de log da Web, um comentário enviado pelo usuário, ou qualquer outro item independente do conteúdo.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seções</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside"><code>&lt;aside></code></a>
+                                    </td>
+                                    <td><small>Define um conteúdo reservado do resto do conteúdo da página. Se for removida, o conteúdo restante ainda fazem sentido.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements"><small><code>&lt;h1>,&lt;h2>,<br>&lt;h3>,&lt;h4>,<br>&lt;h5>,&lt;h6></code></small></a>
+                                    </td>
+                                    <td><small>São elementos que representam os seis níveis de titulos de cabeçalhos dos documentos. Um elemento título descreve brevemente o tema da seção.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup"><code>&lt;hgroup></code></a>
+                                    </td>
+                                    <td><small>Agrupa um conjunto de elementos <code>&lt;h1></code> a <code>&lt;h6></code> quando um título tem vários níveis. <em>Tag excluída da documentação do html5 pelo W3C</em>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header"><code>&lt;header></code></a>
+                                    </td>
+                                    <td><small>Define o cabeçalho de uma página ou seção. Muitas vezes contém um logotipo, o título do site e uma menu de navegação do conteúdo.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seções</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer"><code>&lt;footer></code></a>
+                                    </td>
+                                    <td><small>Define o rodapé de uma página ou seção. Muitas vezes contém um aviso de copyright, alguns links para informações legal ou endereços para dar feedback.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address"><code>&lt;address></code></a>
+                                    </td>
+                                    <td><small>Define uma seção que contém informações de contato, como endereço e telefone.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main"><code>&lt;main></code></a>
+                                    </td>
+                                    <td><small>Define o conteúdo principal ou importante no documento. Existe apenas um elemento <code>&lt;main></code> no documento.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Agrupando conteúdo</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p"><code>&lt;p></code></a>
+                                    </td>
+                                    <td><small>Define uma parte que deve ser exibido como um paragrafo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr"><code>&lt;hr></code></a>
+                                    </td>
+                                    <td><small>Representa uma ruptura temática entre parágrafos de um artigo ou seção ou qualquer conteúdo mais longo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre"><code>&lt;pre></code></a>
+                                    </td>
+                                    <td><small>Indica que o seu conteúdo é pré-formatado e que este formato deve ser preservada.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote"><code>&lt;blockquote></code></a>
+                                    </td>
+                                    <td><small>Representa uma citação.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Agrupando conteúdo</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol"><code>&lt;ol></code></a>
+                                    </td>
+                                    <td><small>Define uma lista ordenada de itens, que é uma lista que mudam o seu significado, se alterar a ordem dos seus elementos.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul"><code>&lt;ul></code></a>
+                                    </td>
+                                    <td><small>Define uma lista não ordenada.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li"><code>&lt;li></code></a>
+                                    </td>
+                                    <td><small>Define um item de uma lista ol ou de uma <code>&lt;ul></code>.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Agrupando conteúdo</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl"><code>&lt;dl></code></a>
+                                    </td>
+                                    <td><small>Representa uma Lista de Definição.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt"><code>&lt;dt></code></a>
+                                    </td>
+                                    <td><small>Representa um item da Lista de Definição <code>&lt;dd></code>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd"><code>&lt;dd></code></a>
+                                    </td>
+                                    <td><small>Representa a definição dos termos listados imediatamente antes dele.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Agrupando conteúdo</h2>
+                        <table>
+                            <thead> 
+                                <tr> 
+                                    <th>Elemento</th> 
+                                    <th>Descrição</th> 
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure"><code>&lt;figure></code></a>
+                                    </td>
+                                    <td><small>O elemento figura representa um conteúdo de fluxo, opcionalmente com um subtítulo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption"><code>&lt;figcaption></code></a>
+                                    </td>
+                                    <td><small>Representa a legenda do <code>&lt;figure></code>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"><code>&lt;div></code></a>
+                                    </td>
+                                    <td><small>Representa um contêiner genérico sem nenhum significado especial.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Semântica textual</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"><code>&lt;a></code></a>
+                                    </td>
+                                    <td><small>Representa um hyperlink, ligando a outro recurso.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em"><code>&lt;em></code></a>
+                                    </td>
+                                    <td><small>Representa a enfâse do conteudo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong"><code>&lt;strong></code></a>
+                                    </td>
+                                    <td><small>Representa a importância de um pedaço de texto com o forte elemento não altera o sentido da frase.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr"><code>&lt;abbr></code></a>
+                                    </td>
+                                    <td><small>Representa uma abreviatura ou acrônimo, eventualmente, com o seu significado.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Semântica textual</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data"><code>&lt;data></code></a>
+                                    </td>
+                                    <td><small>Associa o seu conteúdo a um equivalente legível por máquina.(Este elemento esta apenas na versão padrão HTML do WHATWG, e não documentado na versão HTML5 da W3C).</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time"><code>&lt;time></code></a>
+                                    </td>
+                                    <td><small>Representa um valor de data e hora, eventualmente com um equivalente legivel por máquina.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code"><code>&lt;code></code></a>
+                                    </td>
+                                    <td><small>Representa uma codificação.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var"><code>&lt;var></code></a>
+                                    </td>
+                                    <td><small>Representa uma variável, que ode ser uma expressão matemática, ou codigo de programação, um identificador representando uma constante, um simbulo identificando  uma quantificação física um parametro de função ou um mero place holder.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp"><code>&lt;samp></code></a>
+                                    </td>
+                                    <td><small>Representa uma saída de um programa de computador.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd"><code>&lt;kbd></code></a>
+                                    </td>
+                                    <td><small>Representa uma entrada do usuário, geralmente pelo teclado, mas não necessáriamente, podendo representar outro tipo de entrada como comandos de voz transcritos.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Semântica textual</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b"><code>&lt;b></code></a>
+                                    </td>
+                                    <td><small>Representa um texto que a que chama a atenção para fins utilitários. Ele não transmite importância extra e não implica uma voz alternativa.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span"><code>&lt;span></code></a>
+                                    </td>
+                                    <td><small>Representa o texto com nenhum significado específico. Deve ser usado quando nenhum outro elemento semântico transmite um significado adequado, o que, neste caso, é frequentemente trazida por atributos globais, como <em>class</em>, <em>lang</em>, ou <em>dir</em>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br"><code>&lt;br></code></a>
+                                    </td>
+                                    <td><small>Representa uma quebra de linha.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Conteúdo embutido</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>&lt;img></code></a>
+                                    </td>
+                                    <td><small>Representa uma imagem.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe></code></a>
+                                    </td>
+                                    <td><small>Representa um contexto de navegação aninhada, que é um documento HTML incorporado.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed"><code>&lt;embed></code></a>
+                                    </td>
+                                    <td><small>Representa um ponto de integração para um, muitas vezes não HTML externo, a aplicação de conteúdo interativo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video></code></a>
+                                    </td>
+                                    <td><small>Representa um vídeo, e seus arquivos de áudio e legendas, associadas com a interface necessária para reproduzi-lo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio></code></a>
+                                    </td>
+                                    <td><small>Representa um som, ou fluxo de áudio.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source></code></a>
+                                    </td>
+                                    <td><small>Permite aos autores especificar fontes de mídia alternativos para elementos como <code>&lt;video></code> ou <code>&lt;audio></code>.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Conteúdo embutido</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas></code></a>
+                                    </td>
+                                    <td><small>Representa uma área de bitmap que os scripts podem ser usados para renderizar gráficos, como jogos ou quaisquer imagens visualizadas em tempo real.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/svg"><code>&lt;svg></code></a>
+                                    </td>
+                                    <td><small>Define uma imagem vectorial incorporado.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/math"><code>&lt;math></code></a>
+                                    </td>
+                                    <td><small>Define uma fórmula matemática.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Tabulação de dados</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table></code></a>
+                                    </td>
+                                    <td><small>Representa dados com mais de uma dimensão.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody"><code>&lt;tbody></code></a>
+                                    </td>
+                                    <td><small>Representa o bloco de linhas que descreve os dados de uma <code>&lt;table></code>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead"><code>&lt;thead></code></a>
+                                    </td>
+                                    <td><small>Representa o bloco de linhas que descreve o título de uma coluna.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot"><code>&lt;tfoot></code></a>
+                                    </td>
+                                    <td><small>Representa o bloco de linhas que descreve o resumo de uma coluna.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr"><code>&lt;tr></code></a>
+                                    </td>
+                                    <td><small>Representa uma linha de células de uma tabela.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td"><code>&lt;td></code></a>
+                                    </td>
+                                    <td><small>Representa uma célula de dados numa tabela.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th"><code>&lt;th></code></a>
+                                    </td>
+                                    <td><small>Representa uma célula de cabeçalho de uma tabela.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Formulários</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"><code>&lt;form></code></a>
+                                    </td>
+                                    <td><small>Representa um formulário, que consiste em controles, que podem ser enviados para um servidor para processamento.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset"><code>&lt;fieldset></code></a>
+                                    </td>
+                                    <td><small>Representa um conjunto de controles.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend"><code>&lt;legend></code></a>
+                                    </td>
+                                    <td><small>Representa a legenda para um <code>&lt;fieldset></code>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label"><code>&lt;label></code></a>
+                                    </td>
+                                    <td><small>Representa a legenda de um controle de um <code>&lt;form></code>.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"><code>&lt;input></code></a>
+                                    </td>
+                                    <td><small>Representa um campo de dados digitados permitindo que o usuário edite os dados.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Formulários</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"><code>&lt;button></code></a>
+                                    </td>
+                                    <td><small>Representa um botão.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>&lt;select></code></a>
+                                    </td>
+                                    <td><small>Representa um controle que permite a seleção entre um conjunto de opções.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist"><code>&lt;datalist></code></a>
+                                    </td>
+                                    <td><small>Representa um conjunto de opções pré-definidas para outros controles.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup"><code>&lt;optgroup></code></a>
+                                    </td>
+                                    <td><small>Representa um conjunto de opções, agrupados logicamente.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option"><code>&lt;option></code></a>
+                                    </td>
+                                    <td><small>Representa uma opção em um elemento <code>&lt;select></code>, ou uma sugestão de um elemento <code>&lt;datalist></code>.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Formulários</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea"><code>&lt;textarea></code></a>
+                                    </td>
+                                    <td><small>Representa um controle de edição de texto multi linhas.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output"><code>&lt;output></code></a>
+                                    </td>
+                                    <td><small>Representa o resultado de um cálculo.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress"><code>&lt;progress></code></a>
+                                    </td>
+                                    <td><small>Representa o progresso de uma tarefa.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"><code>&lt;meter></code></a>
+                                    </td>
+                                    <td><small>Representa uma medida escalar (de um valor fracionário), dentro de um intervalo conhecido.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Referência usada</h2>
+                        <p><a href="https://developer.mozilla.org">Mozilla Developer Network</a>.</p>
+                    </section>
+				</section>
+                <section>
+                    <section>
+						<img width="284" height="400" data-src="/imgs/css3-search-box.png" alt="Cascading Style Sheets">
+						<br>
+						<p><em>CSS</em> (Cascading Style Sheets).</p>
+						<p>É uma linguagem de estilo utilizada para descrever a apresentação de um documento escrito em HTML ou outras linguagens de marcação, como SVG.</p>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>*</code>
+                                    </td>
+                                    <td><small>Quaisquer elemento</small></td>
+                                    <td><small>Seletor universal</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E</code>
+                                    </td>
+                                    <td><small>Elementos tipo E</small></td>
+                                    <td><small>Seletor tipo</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E[foo]</code>
+                                    </td>
+                                    <td><small>Elementos com atributo "foo"</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E[foo="bar"]</code>
+                                    </td>
+                                    <td><small>Elementos E cujo valor do atributo "foo" é exatamente igual a "bar"</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E[foo~="bar"]</code>
+                                    </td>
+                                    <td><small>Elementos E cujo valor do atributo "foo" é uma lista de valores separados por espaço, um dos quais é exatamente igual a "bar"</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E[foo^="bar"]</code>
+                                    </td>
+                                    <td><small>Elementos E cujo valor do atributo "foo" começa exatamente com a string "bar"</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E[foo$="bar"]</code>
+                                    </td>
+                                    <td><small>Elementos E cujo valor do atributo "foo" termina exatamente com a string "bar"</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E[foo*="bar"]</code>
+                                    </td>
+                                    <td><small>Elementos E cujo valor do atributo "foo" contém a substring "bar"</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E[foo|="en"]</code>
+                                    </td>
+                                    <td><small>Elementos E cujo atributo "foo" tem uma lista de valores começando com "en" e seguida por um hífen</small></td>
+                                    <td><small>Seletor atributo</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:root</code>
+                                    </td>
+                                    <td><small>Elemento E raíz do documento</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:nth-child(n)</code>
+                                    </td>
+                                    <td><small>Elemento E que é o enésimo filho do seu elemento pai</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:nth-last-child(n)</code>
+                                    </td>
+                                    <td><small>Elemento E que é o enésimo filho (contado de trás para frente) do seu elemento pai</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:nth-of-type(n)</code>
+                                    </td>
+                                    <td><small>Elemento E que é o enésimo irmão do seu tipo</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:nth-last-of-type(n)</code>
+                                    </td>
+                                    <td><small>Elemento E que é o enésimo irmão (contado de trás para frente) do seu tipo</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:first-child</code>
+                                    </td>
+                                    <td><small>Elemento E que é o primeiro filho do seu elemento pai</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:last-child</code>
+                                    </td>
+                                    <td><small>Elemento E que é o último filho do seu elemento pai</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:first-of-type</code>
+                                    </td>
+                                    <td><small>Elemento E que é o primeiro irmão de seu tipo</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:last-of-type</code>
+                                    </td>
+                                    <td><small>Elemento E que é o último irmão de seu tipo</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:only-child</code>
+                                    </td>
+                                    <td><small>Elemento E que é o único filho de seu elemento pai</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:only-of-type</code>
+                                    </td>
+                                    <td><small>Elemento E que é irmão único do seu tipo</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:empty</code>
+                                    </td>
+                                    <td><small>Elemento E que não tem elementos filhos (inclusive nós de texto)</small></td>
+                                    <td><small>Pseudo-classe estrutural</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:link,<br>E:visited</code>
+                                    </td>
+                                    <td><small>Elemento E que sendo destino de um link ainda não foi visitado (:link) ou que já tenha sido visitado (:visited)</small></td>
+                                    <td><small>Pseudo-classe link</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:active,<br>E:hover,<br>E:focus</code>
+                                    </td>
+                                    <td><small>Elemento E durante determinadas ações do usuário</small></td>
+                                    <td><small>Pseudo-classe ação do usuário</small></td>
+                                    <td><small>1 e 2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:target</code>
+                                    </td>
+                                    <td><small>Elemento E que é o destino de um fragmento identificador de um URI</small></td>
+                                    <td><small>Pseudo-classe :target</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:lang(pt-br)</code>
+                                    </td>
+                                    <td><small>Elemento E em um determinado idioma - "exemplo: pt-br"</small></td>
+                                    <td><small>Pseudo-classe :lang()</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:enabled,<br>E:disabled</code>
+                                    </td>
+                                    <td><small>Elemento E de uma interface de usuário que está habilitado (:enabled) ou desabilitado (:disabled)</small></td>
+                                    <td><small>Pseudo-classe estado do elemento UI</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:checked</code>
+                                    </td>
+                                    <td><small>Elemento E de uma interface de usuário que está marcado (:checked) (por exemplo: radio-button ou checkbox)</small></td>
+                                    <td><small>Pseudo-classe estado do elemento UI</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E:first-line</code>
+                                    </td>
+                                    <td><small>Primeira linha formatada do elemento E</small></td>
+                                    <td><small>Pseudo-elemento :first-line</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:first-letter</code>
+                                    </td>
+                                    <td><small>Primeira letra formatada do elemento E</small></td>
+                                    <td><small>Pseudo-elemento :first-letter</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:before</code>
+                                    </td>
+                                    <td><small>Conteúdo gerado antes do elemento E</small></td>
+                                    <td><small>Pseudo-elemento :before</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:after</code>
+                                    </td>
+                                    <td><small>Conteúdo gerado depois do elemento E</small></td>
+                                    <td><small>Pseudo-elemento :after</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E.foo</code>
+                                    </td>
+                                    <td><small>Elemento E cujo valor da classe é "foo"</small></td>
+                                    <td><small>Seletor classe</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E#foo</code>
+                                    </td>
+                                    <td><small>Elemento E cujo valor do id é "foo"</small></td>
+                                    <td><small>Seletor id</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E:not(selector)</code>
+                                    </td>
+                                    <td><small>Elemento E que não casa com o seletor simples seletor</small></td>
+                                    <td><small>Pseudo-classe negação</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Seletores</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Seletor</th>
+                                    <th>Seleciona</th>
+                                    <th>Tipo</th>
+                                    <th>Versão</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>E F</code>
+                                    </td>
+                                    <td><small>Elemento F descendente do elemento E</small></td>
+                                    <td><small>Elemento descendente</small></td>
+                                    <td><small>1</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E > F</code>
+                                    </td>
+                                    <td><small>Elemento F filho do elemento E</small></td>
+                                    <td><small>Elemento filho</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E + F</code>
+                                    </td>
+                                    <td><small>Elemento F imediatamente precedido pelo elemento E</small></td>
+                                    <td><small>Elemento irmão adjacente</small></td>
+                                    <td><small>2</small></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>E ~ F</code>
+                                    </td>
+                                    <td><small>Elemento F precedido pelo elemento E</small></td>
+                                    <td><small>Elemento irmão geral</small></td>
+                                    <td><small>3</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Referência usada</h2>
+                        <p><a href="http://www.maujor.com/tutorial/guia-completo-seletores-css3.php">Maujor - Guia de seletores CSS</a>.</p>
+                    </section>
+                    <section>
+                        <h2>Responsividade</h2>
+                        <p>O Web design responsivo (RWD, na sigla em inglês) é uma configuração na qual o servidor sempre envia o mesmo código HTML a todos os dispositivos, e o CSS é usado para alterar o processamento da página no dispositivo.</p>
+                    </section>
+                    <section>
+                        <h2>Responsividade</h2>
+                        <p><small>Para sinalizar aos navegadores que sua página se adaptará a todos os dispositivos, adicione uma metatag ao cabeçalho do documento:</small></p>
+                        <pre><code class="html" data-trim>
+...
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+...
+                        </code></pre>
+                    </section>
+                </section>
+				<section>
+					<section>
+						<h2>AngularJS</h2>
+						<p>
+							HTML aprimorado para aplicativos da web!
+						</p>
+					</section>
+
+					<section>
+						<h2>Por quê AngularJS?</h2>
+						<p>
+							HTML é ótimo para declarar documentos estáticos, mas vacila quando tentamos usá-lo para declarar visualizações dinâmicas em aplicações web.
+							AngularJS permite estender elementos HTML para a sua aplicação.
+							O resultado é expressivo, legível e rápido para se desenvolver.
+						</p>
+					</section>
+
+					<section>
+						<h2>Frameworks MV*</h2>
+						<table>
+							<tbody>
+								<tr>
+									<td>Backbone.js</td>
+									<td>Ember.js</td>
+								</tr>
+								<tr>
+									<td>Knockout.js</td>
+									<td>Angular.js</td>
+								</tr>
+								<tr>
+									<td>Cappuccino</td>
+									<td>JavaScript MVC</td>
+								</tr>
+								<tr>
+									<td>Meteor</td>
+									<td>Spice.js</td>
+								</tr>
+								<tr>
+									<td>Riot.js</td>
+									<td>CanJS</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h2>JavaScript The Right Way</h2>
+						<h4>Criado pelo Google, Angular.js é como um polyfill para o futuro do HTML.</h4>
+						<img src="img/JStherightway-angularjs.png" alt="" />
+						<p>Não fui eu quem disse.</p>
+					</section>
+
+					<section>
+						<h2>Características do AngularJS</h2>
+						<h5>SPA (Single Page Applications)</h5>
+						<p>
+							Aplicações inteiramente contidas no browser que não precisam fazer requisições de novas páginas no servidor.
+						</p>
+					</section>
+
+					<section>
+						<h2>Características do AngularJS</h2>
+						<ul>
+							<li>
+								Separação de responsabilidades
+								<ul>
+									<li><i>Controllers</i></li>
+									<li><i>Services</i></li>
+									<li><i>Factories</i></li>
+									<li><i>Directives</i></li>
+									<li><i>Providers</i></li>
+								</ul>
+							</li>
+							<li>Estrutura MVC ou MVW<i>hatever</i></li>
+							<li>Injeção de dependências (<i>Dependency Injection</i>)</li>
+							<li>Ligação de dados (<i>Data Binding</i>)</li>
+							<li>Rotas</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Modularização com AngularJS</h2>
+						<p>
+							Criação de módulos reutilizáveis ficou fácil.
+						</p>
+						<p>
+							Por consequência disso, atualmente com uma busca no <i>NPM</i> por <i>angular</i> retornam em <i>4.323</i> resultados e no <i>bower</i> <i>6.043</i>.
+						</p>
+					</section>
+
+					<section>
+						<h2>Exemplo de app simples</h2>
+<pre><code class="html" data-trim>
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+ &lt;head&gt;
+  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div&gt;
+   &lt;label&gt;Nome:&lt;/label&gt;
+   &lt;input type=&quot;text&quot; ng-model=&quot;seuNome&quot; placeholder=&quot;Seu nome&quot;&gt;
+   &lt;hr&gt;
+   &lt;h1&gt;Olá {{seuNome}}!&lt;/h1&gt;
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Dando poder ao HTML com diretivas do AngularJS</h2>
+<pre><code class="html" data-trim>
+&lt;div ng-controller=&quot;UsuarioCtrl as ctrl&quot;&gt;
+ &lt;form ng-submit="ctrl.submit()" name="usuarioForm" novalidate&gt;
+  &lt;div&gt;
+   &lt;label&gt;Usuário&lt;label&gt;
+   &lt;input type="text" name="usuario" ng-model="ctrl.usuario" ng-minlength="5" ng-maxlength="10" required&gt;
+   &lt;div ng-show="usuarioForm.$submitted || usuarioForm.usuario.$touched"&gt;
+    &lt;div ng-show="usuarioForm.usuario.$error.required"&gt;Preencha seu nome.&lt;/div&gt;
+    &lt;div ng-show="usuarioForm.usuario.$error.minlength"&gt;Deve ter mais de 5 caracteres.&lt;/div&gt;
+    &lt;div ng-show="usuarioForm.usuario.$error.maxlength"&gt;Deve ter menos de 10 caracteres.&lt;/div&gt;
+   &lt;/div&gt;
+  &lt;div&gt;
+  &lt;div&gt;
+   &lt;button type="submit" ng-disabled="usuarioForm.$invalid"&gt;Salvar&lt;/button&gt;
+  &lt;/div&gt;
+ &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Diretivas</h2>
+						<p>
+							Como o AngularJS lida com manipulação do DOM e renderiza UI/Componentes reutilizáveis.
+						</p>
+						<p>
+							Desde trechos HTML simples até componentes complexos com comportamentos específicos definidos pelo desenvolvedor.
+						</p>
+					</section>
+
+					<section>
+						<h2>Criando uma diretiva</h2>
+						<ul>
+							<li>Modulo</li>
+							<li>Diretiva</li>
+							<li>Template</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Código do modulo</h2>
+<pre><code class="javascript" data-trim>
+(function() {
+  'use strict';
+
+  angular
+    .module('gsTable', []);
+})();
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Código da diretiva</h2>
+<pre><code class="javascript" data-trim>
+(function() {
+  'use strict';
+
+  angular
+    .module('gsTable')
+    .directive('gsTable', tableDirective);
+
+  function tableDirective() {
+    var directive = {
+      link: link,
+      templateUrl: 'components/table/templates/table.html',
+      restrict: 'EA'
+    };
+    return directive;
+
+    function link(scope, element, attrs) {
+      if (!attrs.columns) throw 'Columns não informadas.';
+      scope.columns = attrs.columns.split(',');
+    }
+  }
+})();
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Código do template</h2>
+<pre><code class="html" data-trim>
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th ng-if=&quot;columns&quot; ng-repeat=&quot;colum in columns&quot; ng-bind=&quot;colum&quot;&gt;&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr ng-if=&quot;content.length > 0&quot; ng-repeat=&quot;rows in content&quot;&gt;
+   &lt;td ng-repeat=&quot;value in rows&quot; ng-bind=&quot;value&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr ng-if=&quot;content.length == 0&quot;&gt;
+   &lt;td cols=&quot;{{columns.length}}&quot;&gt;Nenhum registro&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Usando a diretiva</h2>
+						<ul>
+							<li>App module</li>
+							<li>Main controller</li>
+							<li>Index html</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Código do modulo</h2>
+<pre><code class="javascript" data-trim>
+(function() {
+  'use strict';
+
+  angular
+    .module('app', ['gsTable']);
+
+})();
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Código do controller</h2>
+<pre><code class="javascript" data-trim>
+(function() {
+  angular.module('app')
+    .controller('MainCtrl', MainCtrl);
+
+  function MainCtrl($scope, $http) {
+    $http.get('data.json').then(function(response) {
+      $scope.content = response.data.content;
+    }, function(error) {
+      console.error(error);
+    });
+  }
+})();
+</code></pre>
+					</section>
+
+					<section>
+						<h2>Código do html</h2>
+<pre><code class="html" data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app=&quot;app&quot;&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Mais poder ao HTML com AngularJS&lt;/title&gt;
+  &lt;script src=&quot;public/lib/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;components/table/module.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;components/table/directive/table.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;controller.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;main ng-controller=&quot;MainCtrl as ctrl&quot;&gt;
+   &lt;gs-table&gt;&lt;/gs-table&gt;
+  &lt;/main&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+					</section>
+
+					<section>
+						<h3>Isso é possível somente com AngularJS?</h3>
+					</section>
+
+					<section>
+						<h1>Não!</h1>
+						<ul>
+							<li>
+								Web Components <br />
+								<small>http://webcomponents.org/</small>
+							</li>
+							<li>
+								Polymer <br />
+								<small>https://www.polymer-project.org/1.0/</small>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Ok, ok, mas quem está usando?</h2>
+					</section>
+
+					<section>
+						<h2>Google</h2>
+						<img src="img/google-web-components.png" alt="" />
+					</section>
+
+					<section>
+						<h2>Google map component</h2>
+						<img src="img/google-map-component.png" alt="" />
+					</section>
+
+					<section>
+						<h2>Conclusão</h2>
+						<p>
+							O HTML (em parceria com JavaScript) está ficando poderoso para criação de aplicações fazendo uso de componentes reutilizáveis.
+						</p>
+						<p>
+							Usem e escrevam seus custom elements! : )
+						</p>
+					</section>
+
+				</section>
+
+				<section style="text-align: left;">
+					<h1>Valeu!</h1>
+					<p>
+						- <a href="https://github.com/guiseek/">Meu GitHub</a> <br>
+						- <a href="http://guiseek.js.org/">Sobre minha carreira</a>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -95,7 +95,7 @@
 
 					<section>
 						<h2>Estrutura de um documento</h2>
-                        <pre><code class="html" data-trim>
+                        <pre><code class="html" data-trim contenteditable style="font-size: 18px;">
 ...
 &lt;body&gt;
     &lt;header&gt;&lt;/header&gt;
@@ -118,7 +118,7 @@
 
 					<section>
 						<h2>Exemplo sem semântica</h2>
-                        <pre><code class="html" data-trim>
+                        <pre><code class="html" data-trim contenteditable style="font-size: 18px;">
 ...
 &lt;div&gt;
     &lt;div&gt;28/01/2016 19:00&lt;/div&gt;
@@ -138,7 +138,7 @@
 
 					<section>
 						<h2>Exemplo com semântica</h2>
-                        <pre><code class="html" data-trim>
+                        <pre><code class="html" data-trim contenteditable style="font-size: 18px;">
 ...
 &lt;div itemscope itemtype="http://schema.org/Event"&gt;
     &lt;div itemprop="startDate" content="2016-01-28T19:00"&gt;28/01/2016 19:00&lt;/div&gt;
@@ -1374,7 +1374,7 @@
                     <section>
                         <h2>Responsividade</h2>
                         <p><small>Para sinalizar aos navegadores que sua página se adaptará a todos os dispositivos, adicione uma metatag ao cabeçalho do documento:</small></p>
-                        <pre><code class="html" data-trim>
+                        <pre><code class="html" data-trim style="font-size: 18px;">
 ...
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
 ...
@@ -1654,56 +1654,13 @@
 &lt;/html&gt;
 </code></pre>
 					</section>
-
-					<section>
-						<h3>Isso é possível somente com AngularJS?</h3>
-					</section>
-
-					<section>
-						<h1>Não!</h1>
-						<ul>
-							<li>
-								Web Components <br />
-								<small>http://webcomponents.org/</small>
-							</li>
-							<li>
-								Polymer <br />
-								<small>https://www.polymer-project.org/1.0/</small>
-							</li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Ok, ok, mas quem está usando?</h2>
-					</section>
-
-					<section>
-						<h2>Google</h2>
-						<img src="img/google-web-components.png" alt="" />
-					</section>
-
-					<section>
-						<h2>Google map component</h2>
-						<img src="img/google-map-component.png" alt="" />
-					</section>
-
-					<section>
-						<h2>Conclusão</h2>
-						<p>
-							O HTML (em parceria com JavaScript) está ficando poderoso para criação de aplicações fazendo uso de componentes reutilizáveis.
-						</p>
-						<p>
-							Usem e escrevam seus custom elements! : )
-						</p>
-					</section>
-
 				</section>
 
 				<section style="text-align: left;">
-					<h1>Valeu!</h1>
+					<h2>Obrigado por participarem, espero que tenham aproveitado!</h2>
 					<p>
-						- <a href="https://github.com/guiseek/">Meu GitHub</a> <br>
-						- <a href="http://guiseek.js.org/">Sobre minha carreira</a>
+						- <a href="https://github.com/guiseek/">github.com/guiseek</a> <br>
+						- <a href="http://guiseek.js.org/">guiseek.js.org</a>
 					</p>
 				</section>
 
@@ -1724,7 +1681,9 @@
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'default', // none/fade/slide/convex/concave/zoom
+                transitionSpeed: 'default',
+                backgroundTransition: 'default',
 
 				// Optional reveal.js plugins
 				dependencies: [
